@@ -6,22 +6,26 @@ import javax.inject.Singleton;
 
 @Singleton
 public class UI {
-    
+
     @Inject
     private List<Foo> fooList;
 
-    public void start() {
-        
-        // This does not work!
-        Lister lister = new Lister();
+    @Inject
+    Lister lister;
 
+    public void start() {
+
+        // This does not work!
+        Lister lister2 = new Lister();
+        
         try {
-            lister.getFoos().stream().forEach(System.out::println);
+            lister2.getFoos().stream().forEach(System.out::println);
         } catch (NullPointerException ex) {
             System.err.println("foosList is null");
         }
-        
+
         // This does work!
+        lister.getFoos().stream().forEach(System.out::println);
         fooList.stream().forEach(System.out::println);
     }
 }

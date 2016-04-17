@@ -3,7 +3,9 @@ package com.mycompany.weldproducestest;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.inject.Produces;
+import javax.inject.Singleton;
 
+@Singleton
 public class FooCreator {
 
     @Produces
